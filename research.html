@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Thermal Lens — Ray V. Adams</title>
+<meta name="description" content="The thermal lens problem of optimal design, in animations from the 2026 RTG talk.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html"><img src="assets/eclipse.jpg" alt=""><span>Ray V. Adams</span></a>
+    <ul>
+      <li><a class="link" href="index.html">About</a></li>
+      <li><a class="link" href="research.html" aria-current="page">Research</a></li>
+      <li><a class="link" href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="page-title">
+    <h1>The thermal lens, in pictures</h1>
+    <p>Animations from “The Thermal Lens Revisited,” NSF RTG Conference on Materials and Optimization, University of Utah, October 2026,
+    with K. A. Lurie and W. C. Sanguinet.</p>
+  </div>
+
+  <section>
+    <div class="prose">
+      <p>The thermal lens is a classic problem of optimal design. Heat enters a square plate along its top edge and leaves through its bottom
+      edge, which is held cold; the sides are insulated. The goal is to send as much of that heat as possible through a window in the middle
+      of the bottom edge. The plate is built from two conductors, a good one, ten times as conductive, and a poor one. Where should the good
+      conductor go?</p>
+      <p>The answer turns out to need microstructure: fine mixtures of the two materials, laminates, whose layers are aligned with the heat
+      flow. In each animation, <em>J</em> is the heat delivered through the window (the larger the better). For scale: a plate made of either
+      material alone delivers <em>J</em> = 0.5, since the window spans half of the bottom edge and receives half of the heat.</p>
+    </div>
+    <div class="legend" aria-label="Legend">
+      <span><i class="swatch" style="background:#fde725"></i>good conductor</span>
+      <span><i class="swatch" style="background:#440154"></i>poor conductor</span>
+      <span><i class="swatch" style="background:#21918c"></i>mixtures in between</span>
+      <span><i class="swatch" style="background:#0057b7"></i>the window</span>
+    </div>
+  </section>
+
+  <article class="figure-card">
+    <div class="media"><video autoplay muted loop playsinline preload="metadata" poster="assets/media/slide05_funnel_to_microstructure_poster.jpg"
+      aria-label="A funnel of good conductor sprouts tongues of both materials; beside it, the smooth relaxed optimum.">
+      <source src="assets/media/slide05_funnel_to_microstructure.mp4" type="video/mp4"></video></div>
+    <div class="caption">
+      <div class="kicker">No budget</div>
+      <h3>From a naive funnel to microstructure</h3>
+      <p>Start from the obvious design, a solid funnel of good conductor over the window. It puts good conductor in 75% of the plate and
+      delivers <em>J</em> = 0.9019. Let the computer improve it one cell at a time, and the funnel's walls give way: tongues of both materials
+      grow out of them, ever finer. With pure materials only, the design reaches <em>J</em> = 0.9338 after 270 iterations, using 53% good
+      conductor. On the right is the relaxed optimum, where mixtures are allowed. It delivers more, <em>J</em> = 0.9372, with only 47% good
+      conductor; the tongues are a coarse attempt at that smooth composite. <strong>The case for composites is not only the last fraction of a
+      percent in performance. It is cost: the obvious design needs about 60% more of the expensive material and still delivers less.</strong></p>
+    </div>
+  </article>
+
+  <article class="figure-card">
+    <div class="media"><video autoplay muted loop playsinline preload="metadata" poster="assets/media/slide07_pure_needles_poster.jpg"
+      aria-label="Pure-material designs at three budgets, refined to 9.2 million cells.">
+      <source src="assets/media/slide07_pure_needles.mp4" type="video/mp4"></video></div>
+    <div class="caption">
+      <div class="kicker">Pure materials</div>
+      <h3>Pure materials, with a budget</h3>
+      <p>The same experiment at three budgets for the good conductor: unlimited, 20% of the plate, and 10%. With a budget, the design starts
+      as a smooth trumpet over the window. As the mesh is refined (here to 9.2 million cells), the designs grow fronds and <em>J</em> rises,
+      but they stay below the relaxed optimum at every budget. Fine structure is not a numerical artifact; it is what the problem asks for.</p>
+    </div>
+  </article>
+
+  <article class="figure-card">
+    <div class="media narrow"><video autoplay muted loop playsinline preload="metadata" poster="assets/media/slide09_1985_revisited_poster.jpg"
+      aria-label="The 1985 scheme, continued with damping until it settles.">
+      <source src="assets/media/slide09_1985_revisited.mp4" type="video/mp4"></video></div>
+    <div class="caption">
+      <div class="kicker">1985</div>
+      <h3>1985, revisited</h3>
+      <p>In 1985 Cherkaev, Gibiansky, and Lurie solved the thermal lens with laminates on the computers of the day. Run with today's
+      resources, their scheme never settles on its own: it flips between two states. With damping it settles within about twenty iterations,
+      improving <em>J</em> from 0.9266 to 0.9351. The settled design shows what coarse grids could not: a graded laminate band between the
+      pure zones, in which the mixture follows the Smooth Deployment Law from one pure material to the other. The gold curve is the edge of
+      the composite zone.</p>
+    </div>
+  </article>
+
+  <article class="figure-card">
+    <div class="media"><video autoplay muted loop playsinline preload="metadata" poster="assets/media/slide10_1995_budget_poster.jpg"
+      aria-label="Optimal laminate designs as the material budget shrinks, with hot spots marked in red and window delivery plotted.">
+      <source src="assets/media/slide10_1995_budget.mp4" type="video/mp4"></video></div>
+    <div class="caption">
+      <div class="kicker">1995</div>
+      <h3>A budget for the good conductor</h3>
+      <p>My 1995 paper added a budget: only so much good conductor may be used. Frame by frame, the budget shrinks from unlimited to 3% of
+      the plate, and the price that enforces it rises from 0 to 3.07. Gold marks the edge of the composite; red marks hot spots, where the
+      local heat flux exceeds 1.5 times the mean delivered through the window. The plot on the right shows how evenly the heat arrives across
+      the window. As material grows scarce, the delivery becomes uneven.</p>
+    </div>
+  </article>
+
+  <article class="figure-card">
+    <div class="media"><video autoplay muted loop playsinline preload="metadata" poster="assets/media/slide11_2026_local_price_poster.jpg"
+      aria-label="The same budgets with a locally varying price for material.">
+      <source src="assets/media/slide11_2026_local_price.mp4" type="video/mp4"></video></div>
+    <div class="caption">
+      <div class="kicker">2026</div>
+      <h3>A local price for material</h3>
+      <p>The same budgets, now with a price for material that varies across the plate, set by a volume-fraction potential, a term that
+      rewards keeping the material together. Tuned for each budget, it shapes where the material goes and how evenly the heat is delivered;
+      fine texture at the crown of the composite changes <em>J</em> only in the fourth decimal place. At the scarcest budget, no tuning evens
+      out the delivery. That limit is where the current research is headed.</p>
+    </div>
+  </article>
+
+  <article class="figure-card">
+    <div class="media"><img src="assets/media/slide18_raw_texture.jpg" loading="lazy"
+      alt="Raw volume-fraction fields showing feathers one to three cells wide."></div>
+    <div class="caption">
+      <div class="kicker">The fine print</div>
+      <h3>Cell-scale texture</h3>
+      <p>Look closely at the raw computed mixtures and you see feathers one to three cells wide at every mesh size, varying the mixture by
+      only 2–3%. Smoothing them out changes <em>J</em> by about one part in ten thousand and leaves the delivery through the window unchanged,
+      so the animations show the mixture averaged over three cells. The large features, the channel's trunk, its taper, and its layering
+      along the heat flow, survive the averaging.</p>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Ray V. Adams</span>
+    <span><a href="https://github.com/rayvadams/NSF-RTG-Conference-Materials-and-Optimization">Slides on GitHub</a></span>
+  </div>
+</footer>
+
+<script>
+  // Respect reduced-motion: stop autoplay and offer controls instead.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('video[autoplay]').forEach(function (v) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+  }
+</script>
+</body>
+</html>
